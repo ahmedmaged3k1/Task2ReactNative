@@ -1,20 +1,61 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { SafeAreaView, StyleSheet, TextInput , Button, View , Alert} from "react-native";
 
-export default function App() {
+const UselessTextInput = () => {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    
+    <SafeAreaView>
+      <TextInput
+        style={styles.input}
+        onChangeText={newEmail => setEmail(newEmail)}
+        placeholder="Name"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={newPassword => setPassword(newPassword)}
+        
+        placeholder="Password"
+        keyboardType="visible-password"
+      />
+      <View  
+      style={
+        {
+          backgroundColor: "#f194ff",
+          borderBottomColor: '#000000',
+        }
+      }
+      >
+      <Button
+      title="Submit"
+      onPress={showAlert}
+      color="#fff"
+      >
+
+      </Button>
+      </View>
+    
+    </SafeAreaView>
   );
-}
+  function  showAlert()   {
+    Alert.alert(
+       'email is '+email+ ' and password is  '+password
+    )
+  }
+ 
+};
+
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
 });
+
+ 
+export default UselessTextInput;
